@@ -35,9 +35,8 @@ export const createNewChat=asyncHandler(async(req,res)=>{
     
     const chat=await Chat.findOne({isGroupChat: false,users: { $all: [userId, adminId]}}).where('users').size(2);
     
-    await chat.populate("users", "-password").populate("groupAdmin", "-password").populate("latestMessage");
-    
     if(chat){
+        await chat.populate("users", "-password").populate("groupAdmin", "-password").populate("latestMessage");
         return res.status(200).json(new ApiResponse(200,chat,"chat already exists"));
     }
 
