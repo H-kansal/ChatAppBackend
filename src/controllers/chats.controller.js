@@ -47,7 +47,7 @@ export const createNewChat=asyncHandler(async(req,res)=>{
     if(!newChat){
         throw new ApiError(404,'something went wrong');
     }
-
+    await newChat.populate("users", "-password").populate("groupAdmin", "-password").populate("latestMessage");
     res.status(201).json(new ApiResponse(201,newChat,"new chatcreated"));
 })
 
