@@ -11,7 +11,7 @@ const app=express();
 const server=http.createServer(app);
 const io=new Server(server,{
     cors:{
-        origin:'http://localhost:5173', // Replace with your frontend URL
+        origin:'https://chat-app-frontend-seven-beta.vercel.app', // Replace with your frontend URL
         credentials: true, // Allow credentials (cookies, authorization headers, etc.)
     }
 })
@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(cors({
-    origin:'http://localhost:5173', // Replace with your frontend URL
+    origin:'https://chat-app-frontend-seven-beta.vercel.app', // Replace with your frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
 }))
 dotenv.config({    // this is to config the dotenv
